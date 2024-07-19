@@ -1,0 +1,52 @@
+﻿@model Gastos_MVC.Models.ListadoDeGasto
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Crear gasto</h1>
+@Html.ValidationSummary()
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CompradorId" class="control-label">Comprador</label>
+                <select asp-for="CompradorId" class="form-control" asp-items="ViewBag.CompradorId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoGastosId" class="control-label">Categoría de gasto</label>
+                <select asp-for="TipoGastosId" class ="form-control" asp-items="ViewBag.TipoGastosId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="DetalleCompra" class="control-label"> Detalle de compra</label>
+                <input asp-for="DetalleCompra" class="form-control" />
+                <span asp-validation-for="DetalleCompra" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalGastado" class="control-label">Total Gastado</label>
+                <input asp-for="TotalGastado" class="form-control" />
+                <span asp-validation-for="TotalGastado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fecha" class="control-label">Fecha</label>
+                <div class="input-group date">
+                    <input asp-for="Fecha" class="form-control datepicker" />
+                </div>
+                <span asp-validation-for="Fecha" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Volver a compras</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

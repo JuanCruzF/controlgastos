@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Gastos_MVC.Models.ListadoDeGasto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Compras</h1>
+
+<p>
+    <a asp-action="Create">Nueva compra</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DetalleCompra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalGastado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comprador)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoGastos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DetalleCompra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalGastado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comprador.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoGastos.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.ListadoGastosId">Editar</a> |
+                <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.ListadoGastosId">Detalles</a> |
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.ListadoGastosId">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

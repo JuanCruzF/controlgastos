@@ -1,0 +1,69 @@
+﻿@model CombinedViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Combinar Modelos</title>
+    <!-- Asegúrate de que el enlace a Bootstrap está incluido en el Layout -->
+    @* No es necesario incluirlo aquí si ya está en el Layout *@
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="mb-4">Gastos Por Categoría</h1>
+
+        @if (Model.Model1 != null && Model.Model1.Any())
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Comprador</th>
+                        <th>Tipo de Gasto</th>
+                        <th>Total Gastado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Model1)
+                    {
+                        <tr>
+                            <td>@item.Comprador</td>
+                            <td>@item.TipoGasto</td>
+                            <td>@item.TotalGastado</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-warning">No hay datos para GastosPorCategoria.</div>
+        }
+
+        <h1 class="mt-5 mb-4">Gastos Totales</h1>
+
+        @if (Model.Model2 != null && Model.Model2.Any())
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Comprador</th>
+                        <th>Total Gastado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Model2)
+                    {
+                        <tr>
+                            <td>@item.Nombre</td>
+                            <td>@item.TotalGastado</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-warning">No hay datos para GastosTotales.</div>
+        }
+    </div>
+</body>
+</html>
